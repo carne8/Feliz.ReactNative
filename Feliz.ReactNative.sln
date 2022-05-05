@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".paket", ".paket", "{AEE56936-F14E-43E9-9378-B619D4901037}"
+	ProjectSection(SolutionItems) = preProject
+		paket.dependencies = paket.dependencies
+	EndProjectSection
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Feliz.ReactNative", "src\Feliz.ReactNative.fsproj", "{BDC57843-88DD-42B5-A69E-6F40D82D3409}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BDC57843-88DD-42B5-A69E-6F40D82D3409}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDC57843-88DD-42B5-A69E-6F40D82D3409}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDC57843-88DD-42B5-A69E-6F40D82D3409}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDC57843-88DD-42B5-A69E-6F40D82D3409}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

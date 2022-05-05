@@ -1,0 +1,37 @@
+NUGET
+  remote: https://api.nuget.org/v3/index.json
+    Fable.AST (3.1.1) - restriction: >= netstandard2.0
+    Fable.Browser.Blob (1.2) - restriction: >= netstandard2.0
+      Fable.Core (>= 3.0) - restriction: >= netstandard2.0
+      FSharp.Core (>= 4.7.2) - restriction: >= netstandard2.0
+    Fable.Browser.Dom (2.10) - restriction: >= netstandard2.0
+      Fable.Browser.Blob (>= 1.2) - restriction: >= netstandard2.0
+      Fable.Browser.Event (>= 1.5) - restriction: >= netstandard2.0
+      Fable.Browser.WebStorage (>= 1.1) - restriction: >= netstandard2.0
+      Fable.Core (>= 3.2.8) - restriction: >= netstandard2.0
+      FSharp.Core (>= 4.7.2) - restriction: >= netstandard2.0
+    Fable.Browser.Event (1.5) - restriction: >= netstandard2.0
+      Fable.Browser.Gamepad (>= 1.1) - restriction: >= netstandard2.0
+      Fable.Core (>= 3.0) - restriction: >= netstandard2.0
+      FSharp.Core (>= 4.7.2) - restriction: >= netstandard2.0
+    Fable.Browser.Gamepad (1.1) - restriction: >= netstandard2.0
+      Fable.Core (>= 3.0) - restriction: >= netstandard2.0
+      FSharp.Core (>= 4.7.2) - restriction: >= netstandard2.0
+    Fable.Browser.WebStorage (1.1) - restriction: >= netstandard2.0
+      Fable.Browser.Event (>= 1.5) - restriction: >= netstandard2.0
+      Fable.Core (>= 3.0) - restriction: >= netstandard2.0
+      FSharp.Core (>= 4.7.2) - restriction: >= netstandard2.0
+    Fable.Core (3.7)
+    Fable.React (8.0.1) - restriction: >= netstandard2.0
+      Fable.Browser.Dom (>= 2.4.4) - restriction: >= netstandard2.0
+      Fable.Core (>= 3.2.7) - restriction: >= netstandard2.0
+      FSharp.Core (>= 4.7.2) - restriction: >= netstandard2.0
+    Feliz (1.62)
+      Fable.Core (>= 3.1.5) - restriction: >= netstandard2.0
+      Fable.React (>= 7.4) - restriction: >= netstandard2.0
+      Feliz.CompilerPlugins (>= 1.8) - restriction: >= netstandard2.0
+      FSharp.Core (>= 4.7.2) - restriction: >= netstandard2.0
+    Feliz.CompilerPlugins (1.8) - restriction: >= netstandard2.0
+      Fable.AST (>= 3.0) - restriction: >= netstandard2.0
+      FSharp.Core (>= 4.7.2) - restriction: >= netstandard2.0
+    FSharp.Core (6.0.3)
