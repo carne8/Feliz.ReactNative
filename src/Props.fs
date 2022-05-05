@@ -38,7 +38,6 @@ type prop =
     static member inline accessible (value: bool) = Interop.mkAttr "accessible" value
     static member inline children (value: ReactElement) = Interop.mkAttr "children" value
     static member inline children (elems: ReactElement seq) = Interop.mkAttr "children" (Feliz.Interop.reactApi.Children.toArray (Array.ofSeq elems))
-
     static member inline collapsable (value: bool) = Interop.mkAttr "collapsable" value
     static member inline focusable (value: bool) = Interop.mkAttr "focusable" value
     /// `prop.hitSlop 10.` is same as `prop.hitSlop (10., 10., 10., 10.)`
@@ -101,6 +100,7 @@ type prop =
     static member inline selectionColor (value: string) = Interop.mkAttr "selectionColor" value
     /// Only on iOS.
     static member inline suppressHighlighting (value: string) = Interop.mkAttr "suppressHighlighting" value
+    static member inline text (value: string) = Interop.mkAttr "children" value
 
 
 [<Erase>]
