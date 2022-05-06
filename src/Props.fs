@@ -11,11 +11,11 @@ type prop =
     /// Only on iOS.
     static member inline accessibilityElementsHidden (value: bool) = Interop.mkAttr "accessibilityElementsHidden" value
     static member inline accessibilityHint (value: string) = Interop.mkAttr "accessibilityHint" value
+    static member inline accessibilityLabel (value: string) = Interop.mkAttr "accessibilityLabel" value
     /// Only on iOS.
     static member inline accessibilityLanguage (value: string) = Interop.mkAttr "accessibilityLanguage" value
     /// Only on iOS.
     static member inline accessibilityIgnoresInvertColors (value: bool) = Interop.mkAttr "accessibilityIgnoresInvertColors" value
-    static member inline accessibilityLabel (value: string) = Interop.mkAttr "accessibilityLabel" value
     static member inline accessibilityState (value: {| disabled: bool option; selected: bool option; ``checked``: bool option; busy: bool option; expanded: bool option |}) =
         [ "disabled" ==> Option.defaultValue !!Interop.undefined value.disabled
           "selected" ==> Option.defaultValue !!Interop.undefined value.selected
@@ -102,6 +102,27 @@ type prop =
     static member inline suppressHighlighting (value: string) = Interop.mkAttr "suppressHighlighting" value
     static member inline text (value: string) = Interop.mkAttr "children" value
 
+    // Image props
+    static member inline blurRadius (value: float) = Interop.mkAttr "blurRadius" value
+    /// Only on iOS.
+    static member inline capInsets (value: Rect) = Interop.mkAttr "capInsets" value
+    static member inline defaultSource (value: IImageSource) = Interop.mkAttr "defaultSource" value
+    static member inline defaultSource (value: seq<IImageSourceProp>) = Interop.mkAttr "defaultSource" (createObj !!value)
+    /// Only on Android.
+    static member inline fadeDuration (value: float) = Interop.mkAttr "fadeDuration" value
+    static member inline loadingIndicatorSource (uri: string) = Interop.mkAttr "loadingIndicatorSource" (createObj [ "uri" ==> uri ])
+    static member inline onError (value: {| nativeEvent: obj |} -> unit) = Interop.mkAttr "onError" value
+    static member inline onLoad (value: {| nativeEvent: ImageLoadEvent |} -> unit) = Interop.mkAttr "onLoad" value
+    static member inline onLoadEnd (value: unit -> unit) = Interop.mkAttr "onLoadEnd" value
+    static member inline onLoadStart (value: unit -> unit) = Interop.mkAttr "onLoadStart" value
+    /// Only on iOS.
+    static member inline onPartialLoad (value: unit -> unit) = Interop.mkAttr "onPartialLoad" value
+    static member inline onProgress (value: {| nativeEvent: {| loaded: float; total: float |} |} -> unit) = Interop.mkAttr "onProgress" value
+    /// Only on Android.
+    static member inline progressiveRenderingEnabled (value: bool) = Interop.mkAttr "progressiveRenderingEnabled" value
+    static member inline source (value: IImageSource) = Interop.mkAttr "source" value
+    static member inline source (value: seq<IImageSourceProp>) = Interop.mkAttr "source" (createObj !!value)
+
 
 [<Erase>]
 module prop =
@@ -178,6 +199,21 @@ module prop =
         static member inline none = Interop.mkAttr "pointerEvents" "none"
         static member inline boxNone = Interop.mkAttr "pointerEvents" "box-none"
         static member inline boxOnly = Interop.mkAttr "pointerEvents" "box-only"
+    [<Erase>]
+    type resizeMethod =
+        /// Only on Android.
+        static member inline auto = Interop.mkAttr "resizeMethod" "auto"
+        /// Only on Android.
+        static member inline resize = Interop.mkAttr "resizeMethod" "resize"
+        /// Only on Android.
+        static member inline scale = Interop.mkAttr "resizeMethod" "scale"
+    [<Erase>]
+    type resizeMode =
+        static member inline cover = Interop.mkStyle "resizeMode" "cover"
+        static member inline contain = Interop.mkStyle "resizeMode" "contain"
+        static member inline stretch = Interop.mkStyle "resizeMode" "stretch"
+        static member inline repeat = Interop.mkStyle "resizeMode" "repeat"
+        static member inline center = Interop.mkStyle "resizeMode" "center"
     [<Erase>]
     type textBreakStrategy =
         /// Only on Android.
