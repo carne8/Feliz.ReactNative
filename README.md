@@ -1,4 +1,4 @@
-# Feliz.ReactNative
+# Feliz.ReactNative [![Nuget](https://img.shields.io/nuget/v/Feliz.ReactNative.svg?maxAge=0&colorB=brightgreen)](https://www.nuget.org/packages/Feliz.ReactNative)
 React Native bindings for [Feliz](https://github.com/Zaid-Ajaj/Feliz)
 
 Usage:
