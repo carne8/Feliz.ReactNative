@@ -12,8 +12,9 @@ jobs:
           source-url: https://nuget.pkg.github.com/carne8/index.json
         env:
           NUGET_AUTH_TOKEN: ${{secrets.NUGET_AUTH_TOKEN}}
-      - run: ls -al
-      - run: ls -al src
+      - run: dotnet restore
+      - run: dotnet tool restore
+      - run: dotnet paket restore
       - name: Build the package
         run: dotnet build src/Feliz.ReactNative.fsproj
       - name: Publish the package
