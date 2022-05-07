@@ -3,6 +3,7 @@ on: [push]
 jobs:
   Publish:
     runs-on: ubuntu-latest
+    environment: production
     steps:
       - uses: actions/setup-dotnet@v2
         with:
