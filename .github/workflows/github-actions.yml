@@ -9,7 +9,6 @@ jobs:
       - uses: actions/setup-dotnet@v2
         with:
           dotnet-version: '6.0.x'
-          source-url: https://nuget.pkg.github.com/carne8/index.json
         env:
           NUGET_AUTH_TOKEN: ${{secrets.NUGET_AUTH_TOKEN}}
       - run: dotnet restore
@@ -18,4 +17,4 @@ jobs:
       - name: Build the package
         run: dotnet build src/Feliz.ReactNative.fsproj
       - name: Publish the package
-        run: dotnet nuget push src/bin/Release/*.nupkg
+        run: dotnet nuget push src/bin/Release/*.nupkg --api-key $NUGET_AUTH_TOKEN
