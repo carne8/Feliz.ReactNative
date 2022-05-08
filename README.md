@@ -12,7 +12,7 @@ open Feliz.ReactNative
 let Counter() =
     let (count, setCount) = React.useState(0)
     Comp.view [
-        Comp.view [
+        Comp.text [
             prop.style [
                 style.width 50.
                 style.height 50.
@@ -32,6 +32,6 @@ let Counter() =
             prop.text "Decrement"
         ]
 
-        Comp.text count
+        Comp.text (count |> string)
     ]
 ```
