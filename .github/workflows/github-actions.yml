@@ -1,0 +1,21 @@
+name: Publish on NuGet
+on:
+  push:
+    branches:
+      - main
+jobs:
+  Publish:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: '6.0.x'
+      - run: dotnet tool restore
+      - run: dotnet paket restore
+      - run: dotnet restore
+      - name: Build the package
+        run: dotnet build src/Feliz.ReactNative.fsproj --no-restore --configuration Release
+      - name: Publish the package
+        run: dotnet nuget push src/bin/Release/*.nupkg --api-key ${{secrets.NUGET_AUTH_TOKEN}} --source https://api.nuget.org/v3/index.json
