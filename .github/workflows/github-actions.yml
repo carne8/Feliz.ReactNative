@@ -13,6 +13,6 @@ jobs:
       - run: dotnet paket restore
       - run: dotnet restore
       - name: Build the package
-        run: dotnet build --no-restore src/Feliz.ReactNative.fsproj
+        run: dotnet build src/Feliz.ReactNative.fsproj --no-restore --configuration Release
       - name: Publish the package
         run: dotnet nuget push src/bin/Release/*.nupkg --api-key ${{secrets.NUGET_AUTH_TOKEN}} --source https://api.nuget.org/v3/index.json
