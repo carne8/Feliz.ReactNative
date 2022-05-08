@@ -123,6 +123,58 @@ type prop =
     static member inline source (value: IImageSource) = Interop.mkAttr "source" value
     static member inline source (value: seq<IImageSourceProp>) = Interop.mkAttr "source" (createObj !!value)
 
+    // Text input
+    static member inline autoCorrect (value: bool) = Interop.mkAttr "autoCorrect" value
+    static member inline autoFocus (value: bool) = Interop.mkAttr "autoFocus" value
+    static member inline blurOnSubmit (value: bool) = Interop.mkAttr "blurOnSubmit" value
+    static member inline caretHidden (value: bool) = Interop.mkAttr "caretHidden" value
+    /// Only on iOS.
+    static member inline clearTextOnFocus (value: bool) = Interop.mkAttr "clearTextOnFocus" value
+    static member inline contextMenuHidden (value: bool) = Interop.mkAttr "contextMenuHidden" value
+    static member inline defaultValue (value: string) = Interop.mkAttr "defaultValue" value
+    /// Only on Android.
+    static member inline disableFullscreenUI (value: bool) = Interop.mkAttr "disableFullscreenUI" value
+    static member inline editable (value: bool) = Interop.mkAttr "editable" value
+    /// Only on iOS.
+    static member inline enableReturnKeyAutomatically (value: bool) = Interop.mkAttr "enableReturnKeyAutomatically" value
+    /// Only on Android.
+    static member inline inlineImageLeft (value: string) = Interop.mkAttr "inlineImageLeft" value
+    /// Only on Android.
+    static member inline inlineImagePadding (value: string) = Interop.mkAttr "inlineImagePadding" value
+    /// Only on iOS.
+    static member inline inputAccessoryViewID (value: string) = Interop.mkAttr "inputAccessoryViewID" value
+    static member inline maxLength (value: float) = Interop.mkAttr "maxLength" value
+    static member inline multiline (value: bool) = Interop.mkAttr "multiline" value
+    static member inline onBlur (value: unit -> unit) = Interop.mkAttr "onChange" value
+    static member inline onChange (value: {| nativeEvent: {| eventCount: int; target: int; text: string |} |} -> unit) = Interop.mkAttr "onChange" value
+    static member inline onChangeText (value: string -> unit) = Interop.mkAttr "onChangeText" value
+    static member inline onContentSizeChange (value: {| nativeEvent: {| contentSize: {| width: float; height: float |} |} |} -> unit) = Interop.mkAttr "onContentSizeChange" value
+    static member inline onEndEditing (value: unit -> unit) = Interop.mkAttr "onEndEditing" value
+    static member inline onFocus (value: {| nativeEvent: LayoutEvent |} -> unit) = Interop.mkAttr "onFocus" value
+    static member inline onKeyPress (value: {| nativeEvent: {| key: string |} |} -> unit) = Interop.mkAttr "onKeyPress" value
+    static member inline onScroll (value: {| nativeEvent: {| contentOffset: {| x: float; y: float |} |} |} -> unit) = Interop.mkAttr "onScroll" value
+    static member inline onSelectionChange (value: {| nativeEvent: {| selection: {| start: int; ``end``: int |} |} |} -> unit) = Interop.mkAttr "onSelectionChange" value
+    static member inline onSubmitEditing (value: {| nativeEvent: {| eventCount: int; target: int; text: string |} |} -> unit) = Interop.mkAttr "onSubmitEditing" value
+    static member inline placeholder (value: string) = Interop.mkAttr "placeholder" value
+    static member inline placeholderTextColor (value: string) = Interop.mkAttr "placeholderTextColor" value
+    /// Only on Android.
+    static member inline returnKeyLabel (value: string) = Interop.mkAttr "returnKeyLabel" value
+    /// Only on iOS.
+    static member inline rejectResponderTermination (value: bool) = Interop.mkAttr "rejectResponderTermination" value
+    /// Only on iOS.
+    static member inline scrollEnabled (value: bool) = Interop.mkAttr "scrollEnabled" value
+    static member inline secureTextEntry (value: bool) = Interop.mkAttr "secureTextEntry" value
+    static member inline selection (value: {| start: int; ``end``: int |}) = Interop.mkAttr "selection" value
+    static member inline selectTextOnFocus (value: bool) = Interop.mkAttr "selectTextOnFocus" value
+    static member inline showSoftInputOnFocus (value: bool) = Interop.mkAttr "showSoftInputOnFocus" value
+    /// Only on iOS.
+    static member inline spellCheck (value: bool) = Interop.mkAttr "spellCheck" value
+    /// Only on iOS.
+    static member inline passwordRules (value: string) = Interop.mkAttr "passwordRules" value
+    /// Only on Android.
+    static member inline underlineColorAndroid (value: string) = Interop.mkAttr "underlineColorAndroid" value
+    static member inline value (value: string) = Interop.mkAttr "value" value
+
 
 [<Erase>]
 module prop =
@@ -170,16 +222,68 @@ module prop =
         /// Only on Android.
         static member inline full = Interop.mkAttr "android_hyphenationFrequency" "full"
     [<Erase>]
+    type autoCapitalize =
+        static member inline none = Interop.mkAttr "autoCapitalize" "none"
+        static member inline characters = Interop.mkAttr "autoCapitalize" "characters"
+        static member inline words = Interop.mkAttr "autoCapitalize" "words"
+        static member inline sentences = Interop.mkAttr "autoCapitalize" "sentences"
+    [<Erase>]
+    type autoComplete =
+        static member inline birthdateDay = Interop.mkAttr "autoComplete" "birthdate-day"
+        static member inline birthdateFull = Interop.mkAttr "autoComplete" "birthdate-full"
+        static member inline birthdateMonth = Interop.mkAttr "autoComplete" "birthdate-month"
+        static member inline birthdateYear = Interop.mkAttr "autoComplete" "birthdate-year"
+        static member inline ccCsc = Interop.mkAttr "autoComplete" "cc-csc"
+        static member inline ccExp = Interop.mkAttr "autoComplete" "cc-exp"
+        static member inline ccExpDay = Interop.mkAttr "autoComplete" "cc-exp-day"
+        static member inline ccExpMonth = Interop.mkAttr "autoComplete" "cc-exp-month"
+        static member inline ccExpYear = Interop.mkAttr "autoComplete" "cc-exp-year"
+        static member inline ccNumber = Interop.mkAttr "autoComplete" "cc-number"
+        static member inline email = Interop.mkAttr "autoComplete" "email"
+        static member inline gender = Interop.mkAttr "autoComplete" "gender"
+        static member inline name = Interop.mkAttr "autoComplete" "name"
+        static member inline nameFamily = Interop.mkAttr "autoComplete" "name-family"
+        static member inline nameGiven = Interop.mkAttr "autoComplete" "name-given"
+        static member inline nameMiddle = Interop.mkAttr "autoComplete" "name-middle"
+        static member inline nameMiddleInitial = Interop.mkAttr "autoComplete" "name-middle-initial"
+        static member inline namePrefix = Interop.mkAttr "autoComplete" "name-prefix"
+        static member inline nameSuffix = Interop.mkAttr "autoComplete" "name-suffix"
+        static member inline password = Interop.mkAttr "autoComplete" "password"
+        static member inline passwordNew = Interop.mkAttr "autoComplete" "password-new"
+        static member inline postalAddress = Interop.mkAttr "autoComplete" "postal-address"
+        static member inline postalAddressCountry = Interop.mkAttr "autoComplete" "postal-address-country"
+        static member inline postalAddressExtended = Interop.mkAttr "autoComplete" "postal-address-extended"
+        static member inline postalAddressExtendedPostalCode = Interop.mkAttr "autoComplete" "postal-address-extended-postal-code"
+        static member inline postalAddressLocality = Interop.mkAttr "autoComplete" "postal-address-locality"
+        static member inline postalAddressRegion = Interop.mkAttr "autoComplete" "postal-address-region"
+        static member inline postalCode = Interop.mkAttr "autoComplete" "postal-code"
+        static member inline streetAddress = Interop.mkAttr "autoComplete" "street-address"
+        static member inline smsOtp = Interop.mkAttr "autoComplete" "sms-otp"
+        static member inline tel = Interop.mkAttr "autoComplete" "tel"
+        static member inline telCountryCode = Interop.mkAttr "autoComplete" "tel-country-code"
+        static member inline telNational = Interop.mkAttr "autoComplete" "tel-national"
+        static member inline telDevice = Interop.mkAttr "autoComplete" "tel-device"
+        static member inline username = Interop.mkAttr "autoComplete" "username"
+        static member inline usernameNew = Interop.mkAttr "autoComplete" "username-new"
+        static member inline off = Interop.mkAttr "autoComplete" "off"
+    [<Erase>]
+    type clearButtonMode =
+        /// Only on iOS.
+        static member inline never = Interop.mkAttr "clearButtonMode" "never"
+        /// Only on iOS.
+        static member inline whileEditing = Interop.mkAttr "clearButtonMode" "while-editing"
+        /// Only on iOS.
+        static member inline unlessEditing = Interop.mkAttr "clearButtonMode" "unless-editing"
+        /// Only on iOS.
+        static member inline always = Interop.mkAttr "clearButtonMode" "always"
+    [<Erase>]
     type dataDetectorType =
-        /// Only on Android.
-        static member inline none = Interop.mkAttr "dataDetectorType" "none"
-        /// Only on Android.
         static member inline phoneNumber = Interop.mkAttr "dataDetectorType" "phoneNumber"
-        /// Only on Android.
         static member inline link = Interop.mkAttr "dataDetectorType" "link"
-        /// Only on Android.
+        static member inline address = Interop.mkAttr "dataDetectorType" "address"
+        static member inline calendarEvent = Interop.mkAttr "dataDetectorType" "calendarEvent"
         static member inline email = Interop.mkAttr "dataDetectorType" "email"
-        /// Only on Android.
+        static member inline none = Interop.mkAttr "dataDetectorType" "none"
         static member inline all = Interop.mkAttr "dataDetectorType" "all"
     [<Erase>]
     type ellipsizeMode =
@@ -193,6 +297,44 @@ module prop =
         static member inline yes = Interop.mkAttr "importantForAccessibility" "yes"
         static member inline no = Interop.mkAttr "importantForAccessibility" "no"
         static member inline noHideDescendants = Interop.mkAttr "importantForAccessibility" "no-hide-descendants"
+    [<Erase>]
+    type importantForAutofill =
+        static member inline auto = Interop.mkAttr "importantForAutofill" "auto"
+        static member inline no = Interop.mkAttr "importantForAutofill" "no"
+        static member inline noExcludeDescendants = Interop.mkAttr "importantForAutofill" "noExcludeDescendants"
+        static member inline yes = Interop.mkAttr "importantForAutofill" "yes"
+        static member inline yesExcludeDescendants = Interop.mkAttr "importantForAutofill" "yesExcludeDescendants"
+    [<Erase>]
+    type keyboardAppearance =
+        /// Only on iOS.
+        static member inline default' = Interop.mkAttr "keyboardAppearance" "default"
+        /// Only on iOS.
+        static member inline light = Interop.mkAttr "keyboardAppearance" "light"
+        /// Only on iOS.
+        static member inline dark = Interop.mkAttr "keyboardAppearance" "dark"
+    [<Erase>]
+    type keyboardType =
+        static member inline default' = Interop.mkAttr "keyboardType" "default"
+        static member inline numberPad = Interop.mkAttr "keyboardType" "number-pad"
+        static member inline decimalPad = Interop.mkAttr "keyboardType" "decimal-pad"
+        static member inline numeric = Interop.mkAttr "keyboardType" "numeric"
+        static member inline emailAddress = Interop.mkAttr "keyboardType" "email-address"
+        static member inline phonePad = Interop.mkAttr "keyboardType" "phone-pad"
+        static member inline url = Interop.mkAttr "keyboardType" "url"
+
+        /// Only on iOS.
+        static member inline asciiCapable = Interop.mkAttr "keyboardType" "ascii-capable"
+        /// Only on iOS.
+        static member inline numbersAndPunctuation = Interop.mkAttr "keyboardType" "numbers-and-punctuation"
+        /// Only on iOS.
+        static member inline namePhonePad = Interop.mkAttr "keyboardType" "name-phone-pad"
+        /// Only on iOS.
+        static member inline twitter = Interop.mkAttr "keyboardType" "twitter"
+        /// Only on iOS.
+        static member inline webSearch = Interop.mkAttr "keyboardType" "web-search"
+
+        /// Only on Android.
+        static member inline visiblePassword = Interop.mkAttr "keyboardType" "visible-password"
     [<Erase>]
     type pointerEvents =
         static member inline auto = Interop.mkAttr "pointerEvents" "auto"
@@ -214,6 +356,94 @@ module prop =
         static member inline stretch = Interop.mkStyle "resizeMode" "stretch"
         static member inline repeat = Interop.mkStyle "resizeMode" "repeat"
         static member inline center = Interop.mkStyle "resizeMode" "center"
+    [<Erase>]
+    type returnKeyType =
+        static member inline done' = Interop.mkAttr "returnKeyType" "done"
+        static member inline go = Interop.mkAttr "returnKeyType" "go"
+        static member inline next = Interop.mkAttr "returnKeyType" "next"
+        static member inline search = Interop.mkAttr "returnKeyType" "search"
+        static member inline send = Interop.mkAttr "returnKeyType" "send"
+
+        /// Only on Android.
+        static member inline none = Interop.mkAttr "returnKeyType" "none"
+        /// Only on Android.
+        static member inline previous = Interop.mkAttr "returnKeyType" "previous"
+
+        /// Only on iOS.
+        static member inline default' = Interop.mkAttr "returnKeyType" "default"
+        /// Only on iOS.
+        static member inline emergencyCall = Interop.mkAttr "returnKeyType" "emergency-call"
+        /// Only on iOS.
+        static member inline google = Interop.mkAttr "returnKeyType" "google"
+        /// Only on iOS.
+        static member inline join = Interop.mkAttr "returnKeyType" "join"
+        /// Only on iOS.
+        static member inline route = Interop.mkAttr "returnKeyType" "route"
+        /// Only on iOS.
+        static member inline yahoo = Interop.mkAttr "returnKeyType" "yahoo"
+    [<Erase>]
+    type textAlign =
+        static member inline left = Interop.mkAttr "textAlign" "left"
+        static member inline center = Interop.mkAttr "textAlign" "center"
+        static member inline right = Interop.mkAttr "textAlign" "right"
+    [<Erase>]
+    type textContentType =
+        /// Only on iOS.
+        static member inline none = Interop.mkAttr "textContentType" "none"
+        /// Only on iOS.
+        static member inline URL = Interop.mkAttr "textContentType" "URL"
+        /// Only on iOS.
+        static member inline addressCity = Interop.mkAttr "textContentType" "addressCity"
+        /// Only on iOS.
+        static member inline addressCityAndState = Interop.mkAttr "textContentType" "addressCityAndState"
+        /// Only on iOS.
+        static member inline addressState = Interop.mkAttr "textContentType" "addressState"
+        /// Only on iOS.
+        static member inline countryName = Interop.mkAttr "textContentType" "countryName"
+        /// Only on iOS.
+        static member inline creditCardNumber = Interop.mkAttr "textContentType" "creditCardNumber"
+        /// Only on iOS.
+        static member inline emailAddress = Interop.mkAttr "textContentType" "emailAddress"
+        /// Only on iOS.
+        static member inline familyName = Interop.mkAttr "textContentType" "familyName"
+        /// Only on iOS.
+        static member inline fullStreetAddress = Interop.mkAttr "textContentType" "fullStreetAddress"
+        /// Only on iOS.
+        static member inline givenName = Interop.mkAttr "textContentType" "givenName"
+        /// Only on iOS.
+        static member inline jobTitle = Interop.mkAttr "textContentType" "jobTitle"
+        /// Only on iOS.
+        static member inline location = Interop.mkAttr "textContentType" "location"
+        /// Only on iOS.
+        static member inline middleName = Interop.mkAttr "textContentType" "middleName"
+        /// Only on iOS.
+        static member inline name = Interop.mkAttr "textContentType" "name"
+        /// Only on iOS.
+        static member inline namePrefix = Interop.mkAttr "textContentType" "namePrefix"
+        /// Only on iOS.
+        static member inline nameSuffix = Interop.mkAttr "textContentType" "nameSuffix"
+        /// Only on iOS.
+        static member inline nickname = Interop.mkAttr "textContentType" "nickname"
+        /// Only on iOS.
+        static member inline organizationName = Interop.mkAttr "textContentType" "organizationName"
+        /// Only on iOS.
+        static member inline postalCode = Interop.mkAttr "textContentType" "postalCode"
+        /// Only on iOS.
+        static member inline streetAddressLine1 = Interop.mkAttr "textContentType" "streetAddressLine1"
+        /// Only on iOS.
+        static member inline streetAddressLine2 = Interop.mkAttr "textContentType" "streetAddressLine2"
+        /// Only on iOS.
+        static member inline sublocality = Interop.mkAttr "textContentType" "sublocality"
+        /// Only on iOS.
+        static member inline telephoneNumber = Interop.mkAttr "textContentType" "telephoneNumber"
+        /// Only on iOS.
+        static member inline username = Interop.mkAttr "textContentType" "username"
+        /// Only on iOS.
+        static member inline password = Interop.mkAttr "textContentType" "password"
+        /// Only on iOS.
+        static member inline newPassword = Interop.mkAttr "textContentType" "newPassword"
+        /// Only on iOS.
+        static member inline oneTimeCode = Interop.mkAttr "textContentType" "oneTimeCode"
     [<Erase>]
     type textBreakStrategy =
         /// Only on Android.

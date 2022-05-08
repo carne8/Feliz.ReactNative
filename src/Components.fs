@@ -12,6 +12,8 @@ type Comp =
     static member inline text props = Interop.createNativeElement "Text" props
     static member inline text (text: string) = Interop.reactNativeElementWithChild "Text" text
 
+    static member inline textInput props = Interop.createNativeElement "TextInput" props
+
     static member inline image props = Interop.createNativeElement "Image" props
     static member inline image (imageSource: IImageSource) = Interop.createNativeElement "Image" [ prop.source imageSource ]
     static member inline image (imageSource: seq<IImageSourceProp>) = Interop.createNativeElement "Image" [ prop.source imageSource ]
