@@ -1,8 +1,10 @@
 name: Publish on NuGet
+
 on:
   push:
     branches:
       - main
+
 jobs:
   Publish:
     runs-on: ubuntu-latest
