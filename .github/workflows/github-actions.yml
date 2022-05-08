@@ -10,8 +10,8 @@ jobs:
         with:
           dotnet-version: '6.0.x'
       - run: dotnet tool restore
-      - run: dotnet restore
       - run: dotnet paket restore
+      - run: dotnet restore
       - name: Build the package
         run: dotnet build --no-restore src/Feliz.ReactNative.fsproj
       - name: Publish the package
