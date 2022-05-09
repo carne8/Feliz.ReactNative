@@ -77,7 +77,7 @@ type prop =
     static member inline renderToHardwareTextureAndroid (value: bool) = Interop.mkAttr "renderToHardwareTextureAndroid " value
     /// Only on iOS.
     static member inline shouldRasterizeIOS (value: bool) = Interop.mkAttr "shouldRasterizeIOS " value
-    static member inline style (properties: Feliz.IStyleAttribute list) = Interop.mkAttr "style" (createObj !!properties)
+    static member inline style (properties: seq<IStyleAttribute>) = Interop.mkAttr "style" (createObj !!properties)
     static member inline testID (value: string) = Interop.mkAttr "testID" value
 
     // Text props
@@ -152,7 +152,13 @@ type prop =
     static member inline onEndEditing (value: unit -> unit) = Interop.mkAttr "onEndEditing" value
     static member inline onFocus (value: {| nativeEvent: LayoutEvent |} -> unit) = Interop.mkAttr "onFocus" value
     static member inline onKeyPress (value: {| nativeEvent: {| key: string |} |} -> unit) = Interop.mkAttr "onKeyPress" value
-    static member inline onScroll (value: {| nativeEvent: {| contentOffset: {| x: float; y: float |} |} |} -> unit) = Interop.mkAttr "onScroll" value
+    static member inline onScroll
+        (value:
+            {| nativeEvent:
+                {| contentOffset: {| x: float; y: float |}
+                   contentInset: {| bottom: float; left: float; right: float; top: float |}
+                   contentSize: {| height: float; width: float |} |} |} -> unit) =
+        Interop.mkAttr "onScroll" value
     static member inline onSelectionChange (value: {| nativeEvent: {| selection: {| start: int; ``end``: int |} |} |} -> unit) = Interop.mkAttr "onSelectionChange" value
     static member inline onSubmitEditing (value: {| nativeEvent: {| eventCount: int; target: int; text: string |} |} -> unit) = Interop.mkAttr "onSubmitEditing" value
     static member inline placeholder (value: string) = Interop.mkAttr "placeholder" value
@@ -174,6 +180,80 @@ type prop =
     /// Only on Android.
     static member inline underlineColorAndroid (value: string) = Interop.mkAttr "underlineColorAndroid" value
     static member inline value (value: string) = Interop.mkAttr "value" value
+
+    // ScrollView
+    static member inline stickyHeaderComponent (value: seq<ReactElement>) = Interop.mkAttr "StickyHeaderComponent" value
+    static member inline stickyHeaderComponent (value: ReactElement) = Interop.mkAttr "StickyHeaderComponent" value
+    /// Only on iOS.
+    static member inline alwaysBounceHorizontal (value: bool) = Interop.mkAttr "alwaysBounceHorizontal" value
+    /// Only on iOS.
+    static member inline alwaysBounceVertical (value: bool) = Interop.mkAttr "alwaysBounceVertical" value
+    /// Only on iOS.
+    static member inline automaticallyAdjustContentInsets (value: bool) = Interop.mkAttr "automaticallyAdjustContentInsets" value
+    /// Only on iOS.
+    static member inline automaticallyAdjustsScrollIndicatorInsets (value: bool) = Interop.mkAttr "automaticallyAdjustsScrollIndicatorInsets" value
+    /// Only on iOS.
+    static member inline bounces (value: bool) = Interop.mkAttr "bounces" value
+    /// Only on iOS.
+    static member inline bouncesZoom (value: bool) = Interop.mkAttr "bouncesZoom" value
+    /// Only on iOS.
+    static member inline canCancelContentTouches (value: bool) = Interop.mkAttr "canCancelContentTouches" value
+    /// Only on iOS.
+    static member inline centerContent (value: bool) = Interop.mkAttr "centerContent" value
+    static member inline contentContainerStyle (value: seq<IStyleAttribute>) = Interop.mkAttr "contentContainerStyle" value
+    /// Only on iOS.
+    static member inline contentInset (top: float, bottom: float, left: float, right: float) = Interop.mkAttr "contentInset" {| top = top; bottom = bottom; left = left; right = right |}
+    static member inline contentOffset (value: {| x: float; y: float |}) = Interop.mkAttr "contentOffset" value
+    static member inline decelerationRate (value: float) = Interop.mkAttr "decelerationRate" value
+    static member inline directionalLockEnabled (value: bool) = Interop.mkAttr "directionalLockEnabled" value
+    static member inline disableIntervalMomentum (value: bool) = Interop.mkAttr "disableIntervalMomentum" value
+    static member inline disableScrollViewPanResponder (value: bool) = Interop.mkAttr "disableScrollViewPanResponder" value
+    /// Only on Android.
+    static member inline endFillColor (value: string) = Interop.mkAttr "endFillColor" value
+    /// Only on Android.
+    static member inline fadingEdgeLength (value: float) = Interop.mkAttr "fadingEdgeLength" value
+    static member inline horizontal (value: bool) = Interop.mkAttr "horizontal" value
+    static member inline invertStickyHeaders (value: bool) = Interop.mkAttr "invertStickyHeaders" value
+    static member inline maintainVisibleContentPosition (value: {| minIndexForVisible: float; autoscrollToTopThreshold: float |}) = Interop.mkAttr "maintainVisibleContentPosition" value
+    /// Only on iOS.
+    static member inline maximumZoomScale (value: float) = Interop.mkAttr "maximumZoomScale" value
+    /// Only on iOS.
+    static member inline minimumZoomScale (value: float) = Interop.mkAttr "minimumZoomScale" value
+    /// Only on Android.
+    static member inline nestedScrollEnabled (value: bool) = Interop.mkAttr "nestedScrollEnabled" value
+    static member inline onContentSizeChange (value: (float * float) -> unit) = Interop.mkAttr "onContentSizeChange" value
+    static member inline onMomentumScrollBegin (value: unit -> unit) = Interop.mkAttr "onMomentumScrollBegin" value
+    static member inline onMomentumScrollEnd (value: unit -> unit) = Interop.mkAttr "onMomentumScrollEnd" value
+    static member inline onScrollBeginDrag (value: unit -> unit) = Interop.mkAttr "onScrollBeginDrag" value
+    static member inline onScrollEndDrag (value: unit -> unit) = Interop.mkAttr "onScrollEndDrag" value
+    /// Only on iOS.
+    static member inline onScrollToTop (value: unit -> unit) = Interop.mkAttr "onScrollToTop" value
+    static member inline pagingEnabled (value: bool) = Interop.mkAttr "pagingEnabled" value
+    /// Only on Android.
+    static member inline persistentScrollbar (value: bool) = Interop.mkAttr "persistentScrollbar" value
+    /// Only on iOS.
+    static member inline pinchGestureEnabled (value: bool) = Interop.mkAttr "pinchGestureEnabled" value
+    static member inline refreshControl (value: ReactElement) = Interop.mkAttr "refreshControl" value
+    /// Only on iOS.
+    static member inline scrollEventThrottle (value: float) = Interop.mkAttr "scrollEventThrottle" value
+    /// Only on iOS.
+    static member inline scrollIndicatorInsets (top: float, bottom: float, left: float, right: float) = Interop.mkAttr "scrollIndicatorInsets" {| top = top; bottom = bottom; left = left; right = right |}
+    /// Only on Android.
+    static member inline scrollPerfTag (value: string) = Interop.mkAttr "scrollPerfTag" value
+    /// Only on iOS.
+    static member inline scrollToOverflowEnabled (value: bool) = Interop.mkAttr "scrollToOverflowEnabled" value
+    /// Only on iOS.
+    static member inline scrollsToTop (value: bool) = Interop.mkAttr "scrollsToTop" value
+    static member inline showsHorizontalScrollIndicator (value: bool) = Interop.mkAttr "showsHorizontalScrollIndicator" value
+    static member inline showsVerticalScrollIndicator (value: bool) = Interop.mkAttr "showsVerticalScrollIndicator" value
+    static member inline snapToEnd (value: bool) = Interop.mkAttr "snapToEnd" value
+    static member inline snapToIntervale (value: float) = Interop.mkAttr "snapToIntervale" value
+    static member inline snapToOffsets (value: seq<float>) = Interop.mkAttr "snapToOffsets" value
+    static member inline snapToStart (value: seq<float>) = Interop.mkAttr "snapToStart" value
+    static member inline stickyHeaderHiddenOnScroll (value: bool) = Interop.mkAttr "snapToStartstickyHeaderHiddenOnScroll" value
+    static member inline stickyHeaderIndices (value: seq<float>) = Interop.mkAttr "stickyHeaderIndices" value
+    /// Only on iOS.
+    static member inline zoomScale (value: float) = Interop.mkAttr "zoomScale" value
 
 
 [<Erase>]
@@ -277,6 +357,16 @@ module prop =
         /// Only on iOS.
         static member inline always = Interop.mkAttr "clearButtonMode" "always"
     [<Erase>]
+    type contentInsetAdjustmentBehavior =
+        /// Only on iOS.
+        static member inline automatic = Interop.mkAttr "contentInsetAdjustmentBehavior" "automatic"
+        /// Only on iOS.
+        static member inline scrollableAxes = Interop.mkAttr "contentInsetAdjustmentBehavior" "scrollableAxes"
+        /// Only on iOS.
+        static member inline never = Interop.mkAttr "contentInsetAdjustmentBehavior" "never"
+        /// Only on iOS.
+        static member inline always = Interop.mkAttr "contentInsetAdjustmentBehavior" "always"
+    [<Erase>]
     type dataDetectorType =
         static member inline phoneNumber = Interop.mkAttr "dataDetectorType" "phoneNumber"
         static member inline link = Interop.mkAttr "dataDetectorType" "link"
@@ -285,6 +375,10 @@ module prop =
         static member inline email = Interop.mkAttr "dataDetectorType" "email"
         static member inline none = Interop.mkAttr "dataDetectorType" "none"
         static member inline all = Interop.mkAttr "dataDetectorType" "all"
+    [<Erase>]
+    type decelerationRate =
+        static member normal = Interop.mkAttr "decelerationRate" "normal"
+        static member fast = Interop.mkAttr "decelerationRate" "fast"
     [<Erase>]
     type ellipsizeMode =
         static member inline head = Interop.mkAttr "ellipsizeMode" "head"
@@ -305,6 +399,14 @@ module prop =
         static member inline yes = Interop.mkAttr "importantForAutofill" "yes"
         static member inline yesExcludeDescendants = Interop.mkAttr "importantForAutofill" "yesExcludeDescendants"
     [<Erase>]
+    type indicatorStyle =
+        /// Only on iOS.
+        static member inline default' = Interop.mkAttr "indicatorStyle" "default"
+        /// Only on iOS.
+        static member inline black = Interop.mkAttr "indicatorStyle" "black"
+        /// Only on iOS.
+        static member inline white = Interop.mkAttr "indicatorStyle" "white"
+    [<Erase>]
     type keyboardAppearance =
         /// Only on iOS.
         static member inline default' = Interop.mkAttr "keyboardAppearance" "default"
@@ -312,6 +414,17 @@ module prop =
         static member inline light = Interop.mkAttr "keyboardAppearance" "light"
         /// Only on iOS.
         static member inline dark = Interop.mkAttr "keyboardAppearance" "dark"
+    [<Erase>]
+    type keyboardDismissMode =
+        static member inline none = Interop.mkAttr "keyboardDismissMode" "none"
+        static member inline noDrag = Interop.mkAttr "keyboardDismissMode" "no-drag"
+        /// Only on iOS.
+        static member inline interactive = Interop.mkAttr "keyboardDismissMode" "interactive"
+    [<Erase>]
+    type keyboardShouldPersistTaps =
+        static member inline never = Interop.mkAttr "keyboardShouldPersistTaps" "never"
+        static member inline always = Interop.mkAttr "keyboardShouldPersistTaps" "always"
+        static member inline handled = Interop.mkAttr "keyboardShouldPersistTaps" "handled"
     [<Erase>]
     type keyboardType =
         static member inline default' = Interop.mkAttr "keyboardType" "default"
@@ -335,6 +448,14 @@ module prop =
 
         /// Only on Android.
         static member inline visiblePassword = Interop.mkAttr "keyboardType" "visible-password"
+    [<Erase>]
+    type overScrollMode =
+        /// Only on Android.
+        static member inline auto = Interop.mkAttr "overScrollMode" "auto"
+        /// Only on Android.
+        static member inline always = Interop.mkAttr "overScrollMode" "always"
+        /// Only on Android.
+        static member inline never = Interop.mkAttr "overScrollMode" "never"
     [<Erase>]
     type pointerEvents =
         static member inline auto = Interop.mkAttr "pointerEvents" "auto"
@@ -381,6 +502,14 @@ module prop =
         static member inline route = Interop.mkAttr "returnKeyType" "route"
         /// Only on iOS.
         static member inline yahoo = Interop.mkAttr "returnKeyType" "yahoo"
+    [<Erase>]
+    type snapToAlignment =
+        /// Only on iOS.
+        static member inline start = Interop.mkAttr "snapToAlignment" "start"
+        /// Only on iOS.
+        static member inline center = Interop.mkAttr "snapToAlignment" "center"
+        /// Only on iOS.
+        static member inline end' = Interop.mkAttr "snapToAlignment" "end"
     [<Erase>]
     type textAlign =
         static member inline left = Interop.mkAttr "textAlign" "left"

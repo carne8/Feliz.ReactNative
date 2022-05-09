@@ -68,10 +68,10 @@ type TextLayoutEvent =
       target: float }
 
 type Rect =
-    { bottom: float option
-      left: float option
-      right: float option
-      top: float option }
+    { bottom: float
+      left: float
+      right: float
+      top: float }
 
 type ImageLoadEvent =
     { source:
