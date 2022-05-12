@@ -255,6 +255,57 @@ type prop =
     /// Only on iOS.
     static member inline zoomScale (value: float) = Interop.mkAttr "zoomScale" value
 
+    // FlatList
+    static member inline renderItem
+        (value:
+            {| item: 'Item
+               index: int
+               separators:
+                    {| highlight: unit -> unit
+                       unhighlight: unit -> unit
+                       updateProps: unit -> unit
+                       select: string
+                       newProps: _ |} |}
+            -> ReactElement)
+        =
+        Interop.mkAttr "renderItem" value
+    static member inline data (value: seq<'Item>) = Interop.mkAttr "data" value
+    static member inline ItemSeparatorComponent (value: ReactElement) = Interop.mkAttr "ItemSeparatorComponent" value
+    static member inline ListEmptyComponent (value: ReactElement) = Interop.mkAttr "ListEmptyComponent" value
+    static member inline ListFooterComponent (value: ReactElement) = Interop.mkAttr "ListFooterComponent" value
+    static member inline ListFooterComponentStyle (value: seq<IStyleAttribute>) = Interop.mkAttr "ListFooterComponentStyle" value
+    static member inline ListHeaderComponent (value: ReactElement) = Interop.mkAttr "ListHeaderComponent" value
+    static member inline ListHeaderComponentStyle (value: seq<IStyleAttribute>) = Interop.mkAttr "ListHeaderComponentStyle" value
+    static member inline columnWrapperStyle (value: seq<IStyleAttribute>) = Interop.mkAttr "columnWrapperStyle" value
+    static member inline extraData (value: _) = Interop.mkAttr "extraData" value
+    static member inline getItemLayout (value: (obj * int) -> {| length: int; offset: int; index: int |}) = Interop.mkAttr "getItemLayout" value
+    static member inline initialNumToRender (value: int) = Interop.mkAttr "initialNumToRender" value
+    static member inline initialScrollIndex (value: float) = Interop.mkAttr "initialScrollIndex" value
+    static member inline inverted (value: bool) = Interop.mkAttr "inverted" value
+    static member inline keyExtractor (value: ('Item * int) -> string) = Interop.mkAttr "keyExtractor" value
+    static member inline numColumns (value: int) = Interop.mkAttr "numColumns" value
+    static member inline onEndReached (value: {| info: {| distanceFromEnd: int |} |} -> unit) = Interop.mkAttr "onEndReached" value
+    static member inline onEndReachedThreshold (value: float) = Interop.mkAttr "onEndReachedThreshold" value
+    static member inline onRefresh (value: unit -> unit) = Interop.mkAttr "onRefresh" value
+    static member inline onViewableItemsChanged (value: {| callback: {| changed: ViewToken []; viewableItems: ViewToken [] |} |} -> unit) = Interop.mkAttr "onViewableItemsChanged" value
+    static member inline progressViewOffset (value: float) = Interop.mkAttr "progressViewOffset" value
+    static member inline refreshing (value: bool) = Interop.mkAttr "refreshing" value
+    static member inline viewabilityConfig (value: seq<IViewabilityConfig>) = Interop.mkAttr "viewabilityConfig" (createObj !!value)
+    static member inline viewabilityConfigCallbackPairs
+        (value:
+            (seq<IViewabilityConfig> *
+            ({| info:
+                   {| viewableItems: ViewToken []
+                      changed: ViewToken [] |} |} -> unit)))
+        =
+        let config, callback = value
+
+        createObj [
+            "viewabilityConfig" ==> (createObj !!config)
+            "onViewableItemsChanged" ==> callback
+        ]
+        |> Interop.mkAttr "viewabilityConfigCallbackPairs"
+
 
 [<Erase>]
 module prop =

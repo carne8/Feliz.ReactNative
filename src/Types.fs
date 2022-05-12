@@ -107,3 +107,17 @@ module ImageSource =
 [<Erase>]
 type ImageSource =
     static member inline local (path: string) = unbox<IImageSource> (importDefault path)
+
+type ViewToken =
+    { item: {| key: string |}
+      key: string
+      index: int
+      isViewable: bool }
+
+type IViewabilityConfig = interface end
+[<Erase>]
+type ViewabilityConfig =
+    static member inline minimumViewTime (value: float) = unbox<IViewabilityConfig> ("minimumViewTime", value)
+    static member inline viewAreaCoveragePercentThreshold (value: float) = unbox<IViewabilityConfig> ("viewAreaCoveragePercentThreshold", value)
+    static member inline itemVisiblePercentThreshold (value: float) = unbox<IViewabilityConfig> ("itemVisiblePercentThreshold", value)
+    static member inline waitForInteraction (value: bool) = unbox<IViewabilityConfig> ("waitForInteraction", value)
