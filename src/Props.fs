@@ -306,6 +306,15 @@ type prop =
         ]
         |> Interop.mkAttr "viewabilityConfigCallbackPairs"
 
+    // StatusBar
+    static member inline animated (value: bool) = Interop.mkAttr "animated" value
+    /// Only on Android.
+    static member inline backgroundColor (value: string) = Interop.mkAttr "backgroundColor" value
+    static member inline hidden (value: bool) = Interop.mkAttr "hidden" value
+    /// Only on iOS.
+    static member inline networkActivityIndicatorVisible (value: bool) = Interop.mkAttr "networkActivityIndicatorVisible" value
+    static member inline translucent (value: bool) = Interop.mkAttr "translucent" value
+
 
 [<Erase>]
 module prop =
@@ -632,3 +641,13 @@ module prop =
         static member inline hightQuality = Interop.mkAttr "textBreakStrategy" "hightQuality"
         /// Only on Android.
         static member inline balanced = Interop.mkAttr "textBreakStrategy" "balanced"
+    [<Erase>]
+    type statusBarStyle =
+        static member inline default' = Interop.mkAttr "barStyle" "default"
+        static member inline lightContent = Interop.mkAttr "barStyle" "light-content"
+        static member inline darkContent = Interop.mkAttr "barStyle" "dark-content"
+    [<Erase>]
+    type showHideTransition =
+        static member inline none = Interop.mkAttr "showHideTransition" "none"
+        static member inline fade = Interop.mkAttr "showHideTransition" "fade"
+        static member inline slide = Interop.mkAttr "showHideTransition" "slide"

@@ -5,7 +5,7 @@ open Fable.Core.JsInterop
 
 [<RequireQualifiedAccess>]
 module Interop =
-    let nativeReactElement (_name: obj) (_props: 'a): ReactElement = import "createElement" "react"
+    let nativeReactElement (_element: obj) (_props: 'a): ReactElement = import "createElement" "react"
 
     let inline reactNativeElementWithChild (name: string) (child: 'a) =
         nativeReactElement (import name "react-native") (createObj [ "children" ==> ResizeArray [| child |] ])
