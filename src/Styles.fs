@@ -216,9 +216,9 @@ module style =
         static member inline capitalize = Interop.mkStyle "textTransform" "capitalize"
     [<Erase>]
     type writingDirection =
-        static member inline auto = Interop.mkStyle "textTransform" "auto"
-        static member inline ltr = Interop.mkStyle "textTransform" "ltr"
-        static member inline rtl = Interop.mkStyle "textTransform" "rtl"
+        static member inline auto = Interop.mkStyle "writingDirection" "auto"
+        static member inline ltr = Interop.mkStyle "writingDirection" "ltr"
+        static member inline rtl = Interop.mkStyle "writingDirection" "rtl"
 
     // Layout
     [<Erase>]
@@ -231,19 +231,19 @@ module style =
         static member inline spaceAround = Interop.mkStyle "alignContent" "space-around"
     [<Erase>]
     type alignItems =
-        static member inline flexStart = Interop.mkStyle "alignContent" "flex-start"
-        static member inline flexEnd = Interop.mkStyle "alignContent" "flex-end"
-        static member inline center = Interop.mkStyle "alignContent" "center"
-        static member inline stretch = Interop.mkStyle "alignContent" "stretch"
-        static member inline baseline = Interop.mkStyle "alignContent" "baseline"
+        static member inline flexStart = Interop.mkStyle "alignItems" "flex-start"
+        static member inline flexEnd = Interop.mkStyle "alignItems" "flex-end"
+        static member inline center = Interop.mkStyle "alignItems" "center"
+        static member inline stretch = Interop.mkStyle "alignItems" "stretch"
+        static member inline baseline = Interop.mkStyle "alignItems" "baseline"
     [<Erase>]
     type alignSelf =
-        static member inline auto = Interop.mkStyle "alignContent" "auto"
-        static member inline flexStart = Interop.mkStyle "alignContent" "flex-start"
-        static member inline flexEnd = Interop.mkStyle "alignContent" "flex-end"
-        static member inline center = Interop.mkStyle "alignContent" "center"
-        static member inline stretch = Interop.mkStyle "alignContent" "stretch"
-        static member inline baseline = Interop.mkStyle "alignContent" "baseline"
+        static member inline auto = Interop.mkStyle "alignSelf" "auto"
+        static member inline flexStart = Interop.mkStyle "alignSelf" "flex-start"
+        static member inline flexEnd = Interop.mkStyle "alignSelf" "flex-end"
+        static member inline center = Interop.mkStyle "alignSelf" "center"
+        static member inline stretch = Interop.mkStyle "alignSelf" "stretch"
+        static member inline baseline = Interop.mkStyle "alignSelf" "baseline"
     [<Erase>]
     type direction =
         static member inline inherit' = Interop.mkStyle "direction" "inherit"
