@@ -93,7 +93,7 @@ type prop =
     static member inline onLongPress (value: {| nativeEvent: PressEvent |} -> unit) = Interop.mkAttr "onLongPress" value
     static member inline onPress (value: {| nativeEvent: PressEvent |} -> unit) = Interop.mkAttr "onPress" value
     static member inline onTextLayout (value: TextLayoutEvent -> 'a) = Interop.mkAttr "onTextLayout" value
-    static member inline pressRetentionOffset (value: Rect) = Interop.mkAttr "pressRetentionOffset" value
+    static member inline pressRetentionOffset (value: seq<IRect>) = Interop.mkAttr "pressRetentionOffset" (createObj !!value)
     static member inline pressRetentionOffset (value: float) = Interop.mkAttr "pressRetentionOffset" value
     static member inline selectable (value: bool) = Interop.mkAttr "selectable" value
     /// Only on Android.
@@ -105,7 +105,7 @@ type prop =
     // Image props
     static member inline blurRadius (value: float) = Interop.mkAttr "blurRadius" value
     /// Only on iOS.
-    static member inline capInsets (value: Rect) = Interop.mkAttr "capInsets" value
+    static member inline capInsets (value: seq<IRect>) = Interop.mkAttr "capInsets" (createObj !!value)
     static member inline defaultSource (value: IImageSource) = Interop.mkAttr "defaultSource" value
     static member inline defaultSource (value: seq<IImageSourceProp>) = Interop.mkAttr "defaultSource" (createObj !!value)
     /// Only on Android.
@@ -314,6 +314,19 @@ type prop =
     /// Only on iOS.
     static member inline networkActivityIndicatorVisible (value: bool) = Interop.mkAttr "networkActivityIndicatorVisible" value
     static member inline translucent (value: bool) = Interop.mkAttr "translucent" value
+
+    // Pressable
+    /// Only on Android.
+    static member inline androidDisableSound (value: bool) = Interop.mkAttr "android_disableSound" value
+    /// Only on Android.
+    static member inline androidRipple (value: seq<IRippleConfig>) = Interop.mkAttr "android_ripple" (createObj !!value)
+    static member inline unstablePressDelay (value: float) = Interop.mkAttr "unstable_pressDelay" value
+    static member inline delayLongPress (value: float) = Interop.mkAttr "delayLongPress" value
+    static member inline disabled (value: bool) = Interop.mkAttr "disabled" value
+    static member inline hitSlop (value: seq<IRect>) = Interop.mkAttr "hitSlop" (createObj !!value)
+    static member inline hitSlop (value: float) = Interop.mkAttr "hitSlop" value
+    static member inline pressRetentionOffset (value: seq<IRect>) = Interop.mkAttr "pressRetentionOffset" (createObj !!value)
+    static member inline testOnlyPressed (value: bool) = Interop.mkAttr "testOnly_pressed" value
 
 
 [<Erase>]

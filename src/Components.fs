@@ -27,3 +27,5 @@ type Comp =
     static member inline flatList (children: seq<ReactElement>) = Interop.reactNativeElementWithChildren "FlatList" children
 
     static member inline statusBar props = Interop.createNativeElement "StatusBar" props
+
+    static member inline pressable props = Interop.createNativeElement "Pressable" props

@@ -67,17 +67,20 @@ type TextLayoutEvent =
     { lines: TextLayout []
       target: float }
 
-type Rect =
-    { bottom: float
-      left: float
-      right: float
-      top: float }
-
 type ImageLoadEvent =
     { source:
         {| uri: string
            width: float
            height: float |} }
+
+
+type IRect = interface end
+[<Erase>]
+type Rect =
+    static member inline top (value: float) = unbox<IRect> ("top", value)
+    static member inline left (value: float) = unbox<IRect> ("left", value)
+    static member inline right (value: float) = unbox<IRect> ("right", value)
+    static member inline bottom (value: float) = unbox<IRect> ("bottom", value)
 
 type IImageSource = interface end
 type IImageSourceProp = interface end
@@ -121,3 +124,11 @@ type ViewabilityConfig =
     static member inline viewAreaCoveragePercentThreshold (value: float) = unbox<IViewabilityConfig> ("viewAreaCoveragePercentThreshold", value)
     static member inline itemVisiblePercentThreshold (value: float) = unbox<IViewabilityConfig> ("itemVisiblePercentThreshold", value)
     static member inline waitForInteraction (value: bool) = unbox<IViewabilityConfig> ("waitForInteraction", value)
+
+type IRippleConfig = interface end
+[<Erase>]
+type RippleConfig =
+    static member inline color (value: string) = unbox<IRippleConfig> ("color", value)
+    static member inline borderless (value: bool) = unbox<IRippleConfig> ("borderless", value)
+    static member inline radius (value: float) = unbox<IRippleConfig> ("radius", value)
+    static member inline foreground (value: bool) = unbox<IRippleConfig> ("foreground", value)
