@@ -1,7 +1,9 @@
-# Feliz.ReactNative [![Nuget](https://img.shields.io/nuget/v/Feliz.ReactNative.svg?maxAge=0&colorB=brightgreen)](https://www.nuget.org/packages/Feliz.ReactNative) ![Actions](https://github.com/carne8/Feliz.ReactNative/actions/workflows/publish.yml/badge.svg)
+# Feliz.ReactNative [![Nuget](https://img.shields.io/nuget/v/Feliz.ReactNative.svg?maxAge=0&colorB=brightgreen)](https://www.nuget.org/packages/Feliz.ReactNative) [![Publish on NuGet](https://github.com/carne8/Feliz.ReactNative/actions/workflows/publish.yml/badge.svg)](https://github.com/carne8/Feliz.ReactNative/actions/workflows/publish.yml)
+
 React Native bindings for [Feliz](https://github.com/Zaid-Ajaj/Feliz)
 
 Usage:
+
 ```fsharp
 module App
 
