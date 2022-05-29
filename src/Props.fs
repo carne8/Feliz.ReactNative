@@ -40,9 +40,8 @@ type prop =
     static member inline children (elems: ReactElement seq) = Interop.mkAttr "children" (Feliz.Interop.reactApi.Children.toArray (Array.ofSeq elems))
     static member inline collapsable (value: bool) = Interop.mkAttr "collapsable" value
     static member inline focusable (value: bool) = Interop.mkAttr "focusable" value
-    /// `prop.hitSlop 10.` is same as `prop.hitSlop (10., 10., 10., 10.)`
-    static member inline hitSlop (value: float) = Interop.mkAttr "hitSlop" {| top = value; bottom = value; left = value; right = value |}
-    static member inline hitSlop (top: float, bottom: float, left: float, right: float) = Interop.mkAttr "hitSlop" {| top = top; bottom = bottom; left = left; right = right |}
+    static member inline hitSlop (value: float) = Interop.mkAttr "hitSlop" value
+    static member inline hitSlop (value: seq<IRect>) = Interop.mkAttr "hitSlop" (createObj !!value)
     static member inline nativeID (value: string) = Interop.mkAttr "nativeID" value
     static member inline needsOffscreenAlphaCompositing (value: bool) = Interop.mkAttr "needsOffscreenAlphaCompositing" value
     /// Only on Android.
@@ -322,10 +321,6 @@ type prop =
     static member inline androidRipple (value: seq<IRippleConfig>) = Interop.mkAttr "android_ripple" (createObj !!value)
     static member inline unstablePressDelay (value: float) = Interop.mkAttr "unstable_pressDelay" value
     static member inline delayLongPress (value: float) = Interop.mkAttr "delayLongPress" value
-    static member inline disabled (value: bool) = Interop.mkAttr "disabled" value
-    static member inline hitSlop (value: seq<IRect>) = Interop.mkAttr "hitSlop" (createObj !!value)
-    static member inline hitSlop (value: float) = Interop.mkAttr "hitSlop" value
-    static member inline pressRetentionOffset (value: seq<IRect>) = Interop.mkAttr "pressRetentionOffset" (createObj !!value)
     static member inline testOnlyPressed (value: bool) = Interop.mkAttr "testOnly_pressed" value
 
 
