@@ -255,19 +255,7 @@ type prop =
     static member inline zoomScale (value: float) = Interop.mkAttr "zoomScale" value
 
     // FlatList
-    static member inline renderItem
-        (value:
-            {| item: 'Item
-               index: int
-               separators:
-                    {| highlight: unit -> unit
-                       unhighlight: unit -> unit
-                       updateProps: unit -> unit
-                       select: string
-                       newProps: _ |} |}
-            -> ReactElement)
-        =
-        Interop.mkAttr "renderItem" value
+    static member inline renderItem (value: FlatListItem<_> -> ReactElement) = Interop.mkAttr "renderItem" value
     static member inline data (value: seq<'Item>) = Interop.mkAttr "data" value
     static member inline ItemSeparatorComponent (value: ReactElement) = Interop.mkAttr "ItemSeparatorComponent" value
     static member inline ListEmptyComponent (value: ReactElement) = Interop.mkAttr "ListEmptyComponent" value

@@ -132,3 +132,13 @@ type RippleConfig =
     static member inline borderless (value: bool) = unbox<IRippleConfig> ("borderless", value)
     static member inline radius (value: float) = unbox<IRippleConfig> ("radius", value)
     static member inline foreground (value: bool) = unbox<IRippleConfig> ("foreground", value)
+
+type FlatListItem<'Item> =
+    { index: int
+      item: 'Item
+      separators:
+        {| highlight: (unit -> unit)
+           newProps: 'Item
+           select: string
+           unhighlight: (unit -> unit)
+           updateProps: (unit -> unit) |} }
