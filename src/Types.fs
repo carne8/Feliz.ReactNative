@@ -142,3 +142,24 @@ type FlatListItem<'Item> =
            select: string
            unhighlight: (unit -> unit)
            updateProps: (unit -> unit) |} }
+
+type ITransform = interface end
+[<Erase>]
+type Transform =
+    static member inline matrix (value: seq<float>) = unbox<ITransform> ("matrix", value)
+    static member inline perspective (value: float) = unbox<ITransform> ("perspective", value)
+
+    static member inline rotate (value: string) = unbox<ITransform> ("rotate", value)
+    static member inline rotateX (value: string) = unbox<ITransform> ("rotateX", value)
+    static member inline rotateY (value: string) = unbox<ITransform> ("rotateY", value)
+    static member inline rotateZ (value: string) = unbox<ITransform> ("rotateZ", value)
+
+    static member inline scale (value: float) = unbox<ITransform> ("scale", value)
+    static member inline scaleX (value: float) = unbox<ITransform> ("scaleX", value)
+    static member inline scaleY (value: float) = unbox<ITransform> ("scaleY", value)
+
+    static member inline translateX (value: float) = unbox<ITransform> ("translateX", value)
+    static member inline translateY (value: float) = unbox<ITransform> ("translateY", value)
+
+    static member inline skewX (value: string) = unbox<ITransform> ("skewX", value)
+    static member inline skewY (value: string) = unbox<ITransform> ("skewY", value)

@@ -2,6 +2,7 @@ namespace Feliz.ReactNative
 
 open Feliz
 open Fable.Core
+open Fable.Core.JsInterop
 
 [<Erase>]
 type style =
@@ -132,6 +133,8 @@ type style =
     static member inline paddingLeft (value: string) = Interop.mkStyle "paddingLeft" value
     static member inline paddingRight (value: float) = Interop.mkStyle "paddingRight" value
     static member inline paddingRight (value: string) = Interop.mkStyle "paddingRight" value
+
+    static member inline transform (value: seq<ITransform>) = Interop.mkStyle "transform" (createObj !!value)
 
     static member inline zIndex (value: float) = Interop.mkStyle "zIndex" value
 
