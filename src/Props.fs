@@ -6,6 +6,9 @@ open Fable.Core.JsInterop
 
 [<Erase>]
 type prop =
+    /// Use this if there isn't a the adapted prop.
+    static member inline custom (key: string) value = Interop.mkAttr key value
+
     // View props
     static member inline accessibilityActions (value: AccessibilityActions []) = Interop.mkAttr "accessibilityActions" value
     /// Only on iOS.
@@ -640,7 +643,7 @@ module prop =
         /// Only on Android.
         static member inline balanced = Interop.mkAttr "textBreakStrategy" "balanced"
     [<Erase>]
-    type statusBarStyle =
+    type barStyle =
         static member inline default' = Interop.mkAttr "barStyle" "default"
         static member inline lightContent = Interop.mkAttr "barStyle" "light-content"
         static member inline darkContent = Interop.mkAttr "barStyle" "dark-content"
