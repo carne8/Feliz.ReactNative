@@ -145,21 +145,21 @@ type FlatListItem<'Item> =
 
 type ITransform = interface end
 [<Erase>]
-type Transform =
-    static member inline matrix (value: seq<float>) = unbox<ITransform> ("matrix", value)
-    static member inline perspective (value: float) = unbox<ITransform> ("perspective", value)
+type transform =
+    static member inline matrix (value: seq<float>) = unbox<ITransform> (createObj [ "matrix", value ])
+    static member inline perspective (value: float) = unbox<ITransform> (createObj [ "perspective", value ])
 
-    static member inline rotate (value: string) = unbox<ITransform> ("rotate", value)
-    static member inline rotateX (value: string) = unbox<ITransform> ("rotateX", value)
-    static member inline rotateY (value: string) = unbox<ITransform> ("rotateY", value)
-    static member inline rotateZ (value: string) = unbox<ITransform> ("rotateZ", value)
+    static member inline rotate (value: string) = unbox<ITransform> (createObj [ "rotate", value ])
+    static member inline rotateX (value: string) = unbox<ITransform> (createObj [ "rotateX", value ])
+    static member inline rotateY (value: string) = unbox<ITransform> (createObj [ "rotateY", value ])
+    static member inline rotateZ (value: string) = unbox<ITransform> (createObj [ "rotateZ", value ])
 
-    static member inline scale (value: float) = unbox<ITransform> ("scale", value)
-    static member inline scaleX (value: float) = unbox<ITransform> ("scaleX", value)
-    static member inline scaleY (value: float) = unbox<ITransform> ("scaleY", value)
+    static member inline scale (value: float) = unbox<ITransform> (createObj [ "scale", value ])
+    static member inline scaleX (value: float) = unbox<ITransform> (createObj [ "scaleX", value ])
+    static member inline scaleY (value: float) = unbox<ITransform> (createObj [ "scaleY", value ])
 
-    static member inline translateX (value: float) = unbox<ITransform> ("translateX", value)
-    static member inline translateY (value: float) = unbox<ITransform> ("translateY", value)
+    static member inline translateX (value: float) = unbox<ITransform> (createObj [ "translateX", value ])
+    static member inline translateY (value: float) = unbox<ITransform> (createObj [ "translateY", value ])
 
-    static member inline skewX (value: string) = unbox<ITransform> ("skewX", value)
-    static member inline skewY (value: string) = unbox<ITransform> ("skewY", value)
+    static member inline skewX (value: string) = unbox<ITransform> (createObj [ "skewX", value ])
+    static member inline skewY (value: string) = unbox<ITransform> (createObj [ "skewY", value ])

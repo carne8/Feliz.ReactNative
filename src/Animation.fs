@@ -22,6 +22,7 @@ type SpringOptions =
 
 [<Erase>]
 type Animated =
+    [<Emit "new $0.Value($1)">]
     abstract member Value: float -> AnimationValue
     abstract member divide: float -> AnimationValue -> AnimationValue
     abstract member spring: AnimationValue -> SpringOptions -> AnimationFunc
