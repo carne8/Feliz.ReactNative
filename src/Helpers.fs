@@ -4,7 +4,6 @@ open Fable.Core.JsInterop
 
 type ReactComponent = Feliz.ReactComponentAttribute
 
-[<AutoOpen>]
 module React =
     type ColorScheme =
         | Light
