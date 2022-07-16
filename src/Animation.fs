@@ -5,8 +5,8 @@ open Fable.Core.JsInterop
 open Feliz.ReactNative
 
 let inline getFunctionOf object functionName = object?(functionName)
-let inline animatedFunc (functionName: string) : _ = getFunctionOf (import "Animated" "react-native") functionName
-let inline easingFunc (functionName: string) : _ = getFunctionOf (import "Easing" "react-native") functionName
+let inline animatedFunc (functionName: string) args : _ = getFunctionOf (import "Animated" "react-native") functionName args
+let inline easingFunc (functionName: string) args : _ = getFunctionOf (import "Easing" "react-native") functionName args
 
 
 type AnimValue = float
@@ -89,33 +89,33 @@ type animComposeProp =
 
 [<Erase>]
 type Animated =
-    static member inline value (value: float) : AnimValue = unbox createNew (animatedFunc "Value") value
+    static member inline value (value: float) : AnimValue = !!createNew ((import "Animated" "react-native")?Value) value
     static member inline valueXY (value: float) : AnimValue = unbox createNew (animatedFunc "ValueXY") value
 
     static member inline decay (animation: AnimValue) : AnimFunc = animatedFunc "decay" animation
     static member inline timing (animation: AnimValue) : AnimFunc = animatedFunc "timing" animation
     static member inline spring (animation: AnimValue) : AnimFunc = animatedFunc "spring" animation
-    static member inline decay (animation: AnimValue, config: seq<IAnimConfigProp>) : AnimFunc = animatedFunc "decay" animation (createObj !!config)
-    static member inline timing (animation: AnimValue, config: seq<IAnimConfigProp>) : AnimFunc = animatedFunc "timing" animation (createObj !!config)
-    static member inline spring (animation: AnimValue, config: seq<IAnimConfigProp>) : AnimFunc = animatedFunc "spring" animation (createObj !!config)
+    static member inline decay (animation: AnimValue, config: seq<IAnimConfigProp>) : AnimFunc = animatedFunc "decay" (animation, (createObj !!config))
+    static member inline timing (animation: AnimValue, config: seq<IAnimConfigProp>) : AnimFunc = animatedFunc "timing" (animation, (createObj !!config))
+    static member inline spring (animation: AnimValue, config: seq<IAnimConfigProp>) : AnimFunc = animatedFunc "spring" (animation, (createObj !!config))
 
     static member inline delay (ms: int) : AnimFunc = animatedFunc "delay" ms
     static member inline parallel' (animations: AnimFunc []) : AnimFunc = animatedFunc "parallel" animations
-    static member inline parallel' (animations: AnimFunc [], config: seq<IAnimComposeProp>) : AnimFunc = animatedFunc "parallel" animations (createObj !!config)
+    static member inline parallel' (animations: AnimFunc [], config: seq<IAnimComposeProp>) : AnimFunc = animatedFunc "parallel" (animations, (createObj !!config))
     static member inline sequence (animations: AnimFunc []) : AnimFunc = animatedFunc "sequence" animations
-    static member inline stagger (ms: int) (animations: AnimFunc []) : AnimFunc = animatedFunc "stagger" ms animations
+    static member inline stagger (ms: int) (animations: AnimFunc []) : AnimFunc = animatedFunc "stagger" (ms, animations)
 
-    static member inline add (a: AnimValue) (b: AnimValue) : AnimValue = animatedFunc "add" a b
-    static member inline subtract (a: AnimValue) (b: AnimValue) : AnimValue = animatedFunc "subtract" a b
-    static member inline divide (a: AnimValue) (b: AnimValue) : AnimValue = animatedFunc "divide" a b
-    static member inline modulo (a: AnimValue) (b: AnimValue) : AnimValue = animatedFunc "modulo" a b
-    static member inline multiply (a: AnimValue) (b: AnimValue) : AnimValue = animatedFunc "multiply" a b
-    static member inline diffClamp (a: AnimValue) (b: float) (c: float) : AnimValue = animatedFunc "diffClamp" a b c
+    static member inline add (a: AnimValue) (b: AnimValue) : AnimValue = animatedFunc "add" (a, b)
+    static member inline subtract (a: AnimValue) (b: AnimValue) : AnimValue = animatedFunc "subtract" (a, b)
+    static member inline divide (a: AnimValue) (b: AnimValue) : AnimValue = animatedFunc "divide" (a, b)
+    static member inline modulo (a: AnimValue) (b: AnimValue) : AnimValue = animatedFunc "modulo" (a, b)
+    static member inline multiply (a: AnimValue) (b: AnimValue) : AnimValue = animatedFunc "multiply" (a, b)
+    static member inline diffClamp (a: AnimValue) (b: float) (c: float) : AnimValue = animatedFunc "diffClamp" (a, b, c)
 
     static member inline event (listeners: _ []) : AnimEvent = animatedFunc "event" listeners
-    static member inline event (events: _ [], config: seq<IAnimComposeProp>) : AnimEvent = animatedFunc "event" events (createObj !!config)
+    static member inline event (events: _ [], config: seq<IAnimComposeProp>) : AnimEvent = animatedFunc "event" (events, (createObj !!config))
     static member inline loop (animation: AnimValue) : AnimFunc = animatedFunc "loop" animation
-    static member inline loop (animation: AnimValue, config: seq<IAnimComposeProp>) : AnimFunc = animatedFunc "loop" animation (createObj !!config)
+    static member inline loop (animation: AnimValue, config: seq<IAnimComposeProp>) : AnimFunc = animatedFunc "loop" (animation, (createObj !!config))
 
     static member inline forkEvent (event: AnimEvent) (listener: _ -> unit) = animatedFunc "forkEvent" event listener
     static member inline unforkEvent (event: AnimEvent) (listener: _ -> unit) = animatedFunc "unforkEvent" event listener
