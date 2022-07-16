@@ -4,9 +4,9 @@ open Fable.Core
 open Fable.Core.JsInterop
 open Feliz.ReactNative
 
-let getFunctionOf object functionName = object?(functionName)
-let animatedFunc (functionName: string) : _ = getFunctionOf (import "Animated" "react-native") functionName
-let easingFunc (functionName: string) : _ = getFunctionOf (import "Easing" "react-native") functionName
+let inline getFunctionOf object functionName = object?(functionName)
+let inline animatedFunc (functionName: string) : _ = getFunctionOf (import "Animated" "react-native") functionName
+let inline easingFunc (functionName: string) : _ = getFunctionOf (import "Easing" "react-native") functionName
 
 
 type AnimValue = float
@@ -112,7 +112,6 @@ type Animated =
     static member inline multiply (a: AnimValue) (b: AnimValue) : AnimValue = animatedFunc "multiply" a b
     static member inline diffClamp (a: AnimValue) (b: float) (c: float) : AnimValue = animatedFunc "diffClamp" a b c
 
-    static member inline interpolate (a: AnimValue) (b: AnimValue) : AnimValue = animatedFunc "interpolate" a b
     static member inline event (listeners: _ []) : AnimEvent = animatedFunc "event" listeners
     static member inline event (events: _ [], config: seq<IAnimComposeProp>) : AnimEvent = animatedFunc "event" events (createObj !!config)
     static member inline loop (animation: AnimValue) : AnimFunc = animatedFunc "loop" animation
@@ -126,7 +125,7 @@ type Animated =
 type Comp =
     static member inline viewAnimated = Interop.createNativeElement "Animated.View"
     static member inline imageAnimated = Interop.createNativeElement "Animated.Image"
-    static member inline textAnimated = Interop.createNativeElement "Animated.text"
+    static member inline textAnimated = Interop.createNativeElement "Animated.Text"
     static member inline scrollViewAnimated = Interop.createNativeElement "Animated.ScrollView"
     static member inline flatListAnimated = Interop.createNativeElement "Animated.FlatList"
     static member inline sectionListAnimated = Interop.createNativeElement "Animated.SectionList"
@@ -135,7 +134,7 @@ type Comp =
 module Helpers =
     type IInterpolateConfig = interface end
     [<Erase>]
-    type interpolationConfig =
+    type interpolateConfig =
         static member inline inputRange (value: seq<float>) = unbox<IInterpolateConfig> ("inputRange", value)
         static member inline outputRange (value: seq<float>) = unbox<IInterpolateConfig> ("outputRange", value)
         static member inline easing (value: IEasing) = unbox<IInterpolateConfig> ("easing", value)
@@ -159,20 +158,20 @@ module Helpers =
             static member inline clamp = unbox<IInterpolateConfig> ("extrapolateRight", "clamp")
 
 
-    let getX (animationValue: AnimValue) = animationValue?x
-    let getY (animationValue: AnimValue) = animationValue?y
+    let inline getX (animationValue: AnimValue) = animationValue?x
+    let inline getY (animationValue: AnimValue) = animationValue?y
 
-    let setValue (newValue: float) (animation: AnimValue) : unit = animation?setValue newValue
-    let setOffset (offset: float) (animation: AnimValue) : unit = animation?setOffset offset
-    let flattenOffset (animation: AnimValue) : unit = animation?flattenOffset()
-    let extractOffset (animation: AnimValue) : unit = animation?extractOffset()
-    let addListener (callback: {| value: AnimValue |} -> unit) (animation: AnimValue) : string = animation?addListener callback
-    let removeListener (id: string) (animation: AnimValue) : unit = animation?removeListener id
-    let removeAllListeners (animation: AnimValue) : unit = animation?removeAllListeners()
-    let stopAnimation (animation: AnimValue) : unit = animation?stopAnimation()
-    let stopAnimation' (callback: {| value: AnimValue |} -> unit) (animation: AnimValue) : unit = animation?stopAnimation callback
-    let resetAnimation (animation: AnimValue) : unit = animation?resetAnimation()
-    let resetAnimation' (callback: {| value: AnimValue |} -> unit) (animation: AnimValue) : unit = animation?resetAnimation callback
-    let interpolate (config: seq<IInterpolateConfig>) (animation: AnimValue) : AnimValue = animation?interpolate (createObj !!config)
-    let getLayout (animation: AnimValue) : {| left: float; top: float |} = animation?getLayout()
-    let getTranslateTransform (animation: AnimValue) : ITransform = animation?getTranslateTransform()
+    let inline setValue (newValue: float) (animation: AnimValue) : unit = animation?setValue newValue
+    let inline setOffset (offset: float) (animation: AnimValue) : unit = animation?setOffset offset
+    let inline flattenOffset (animation: AnimValue) : unit = animation?flattenOffset()
+    let inline extractOffset (animation: AnimValue) : unit = animation?extractOffset()
+    let inline addListener (callback: {| value: AnimValue |} -> unit) (animation: AnimValue) : string = animation?addListener callback
+    let inline removeListener (id: string) (animation: AnimValue) : unit = animation?removeListener id
+    let inline removeAllListeners (animation: AnimValue) : unit = animation?removeAllListeners()
+    let inline stopAnimation (animation: AnimValue) : unit = animation?stopAnimation()
+    let inline stopAnimation' (callback: {| value: AnimValue |} -> unit) (animation: AnimValue) : unit = animation?stopAnimation callback
+    let inline resetAnimation (animation: AnimValue) : unit = animation?resetAnimation()
+    let inline resetAnimation' (callback: {| value: AnimValue |} -> unit) (animation: AnimValue) : unit = animation?resetAnimation callback
+    let inline interpolate (config: seq<IInterpolateConfig>) (animation: AnimValue) : AnimValue = animation?interpolate (createObj !!config)
+    let inline getLayout (animation: AnimValue) : {| left: float; top: float |} = animation?getLayout()
+    let inline getTranslateTransform (animation: AnimValue) : ITransform = animation?getTranslateTransform()
