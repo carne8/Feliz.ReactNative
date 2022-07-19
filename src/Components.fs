@@ -6,6 +6,9 @@ open Fable.React
 
 [<Erase>]
 type Comp =
+    static member inline fragment xs = React.fragment xs
+    static member inline keyedFragment (key: int, xs) = React.keyedFragment(key, xs)
+
     static member inline view props = Interop.createNativeElement "View" props
     static member inline view (children: seq<ReactElement>) = Interop.reactNativeElementWithChildren "View" children
 
