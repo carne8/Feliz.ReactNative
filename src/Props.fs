@@ -87,6 +87,7 @@ type prop =
     static member inline allowFontScaling (value: bool) = Interop.mkAttr "allowFontScaling" value
     /// Only on Android.
     static member inline disabled (value: bool) = Interop.mkAttr "disabled" value
+    static member inline key (value: string) = Interop.mkAttr "key" value
     static member inline maxFontSizeMultiplier (value: float) = Interop.mkAttr "maxFontSizeMultiplier" value
     static member inline maxFontSizeMultiplier (value: obj) = Interop.mkAttr "maxFontSizeMultiplier" value
     /// Only on iOS.

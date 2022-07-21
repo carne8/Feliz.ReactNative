@@ -9,3 +9,5 @@ obj/
 .paket/
 paket-files/
 packages/
+
+**.fs.js
