@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>Feliz.ReactNative</PackageId>
-    <Version>0.8.0-rc.9</Version>
+    <Version>0.8.0</Version>
     <Authors>Gaël Bouquain</Authors>
   </PropertyGroup>
   <ItemGroup>
@@ -21,8 +21,6 @@
     <Compile Include="Styles.fs" />
     <Compile Include="Props.fs" />
     <Compile Include="Components.fs" />
-
-    <!-- <Compile Include="Tests.fs" /> -->
   </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>

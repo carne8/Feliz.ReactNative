@@ -63,12 +63,19 @@ module animProp =
             static member inline clamp = unbox<IInterpolateProp> ("extrapolateRight", "clamp")
 
 
-// This module contains many helpers for manipulating animations.
+/// This module contains many helpers for manipulating animations.
+[<RequireQualifiedAccess>]
 module Animation =
     /// Same as ``new Animated.Value(value)`` in JS.
     let inline create value = Animated.value value
     /// Same as ``new Animated.ValueXY(value)`` in JS.
     let inline createXY value = Animated.valueXY value
+
+    /// <summary>Transform a react component in an animated component.</summary>
+    /// <example>```
+    /// let AnimatedView = Animation.createAnimatedComponent Comp.view
+    /// ```</example>
+    let inline createAnimatedComponent component' = Animated.createAnimatedComponent component'
 
     let inline decay config animation = Animated.decay animation config
     let inline timing config animation = Animated.timing animation config
@@ -142,8 +149,9 @@ module Animation =
 
 [<Erase>]
 module Comp =
+    /// This type contains the animated components available in the ``Animated`` module.
     [<Erase; RequireQualifiedAccess>]
-    type Animated =
+    type animated =
         static member inline view = Interop.createElementFromName "Animated.View"
         static member inline image = Interop.createElementFromName "Animated.Image"
         static member inline text = Interop.createElementFromName "Animated.Text"

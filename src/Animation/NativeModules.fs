@@ -38,6 +38,8 @@ type Animated =
     static member inline forkEvent (event: AnimEvent) (listener: _ -> unit) = moduleAnimated?forkEvent event listener
     static member inline unforkEvent (event: AnimEvent) (listener: _ -> unit) = moduleAnimated?unforkEvent event listener
 
+    static member inline createAnimatedComponent (component': seq<Feliz.IReactProperty> -> Feliz.ReactElement) : seq<Feliz.IReactProperty> -> Feliz.ReactElement = moduleAnimated?createAnimatedComponent component'
+
 
 /// This type represents the ``Easing`` module of react-native.
 [<Erase>]

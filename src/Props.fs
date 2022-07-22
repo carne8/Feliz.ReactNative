@@ -45,6 +45,7 @@ type prop =
     static member inline focusable (value: bool) = Interop.mkAttr "focusable" value
     static member inline hitSlop (value: float) = Interop.mkAttr "hitSlop" value
     static member inline hitSlop (value: seq<IRect>) = Interop.mkAttr "hitSlop" (createObj !!value)
+    static member inline key (value: string) = Interop.mkAttr "key" value
     static member inline nativeID (value: string) = Interop.mkAttr "nativeID" value
     static member inline needsOffscreenAlphaCompositing (value: bool) = Interop.mkAttr "needsOffscreenAlphaCompositing" value
     /// Only on Android.
@@ -87,7 +88,6 @@ type prop =
     static member inline allowFontScaling (value: bool) = Interop.mkAttr "allowFontScaling" value
     /// Only on Android.
     static member inline disabled (value: bool) = Interop.mkAttr "disabled" value
-    static member inline key (value: string) = Interop.mkAttr "key" value
     static member inline maxFontSizeMultiplier (value: float) = Interop.mkAttr "maxFontSizeMultiplier" value
     static member inline maxFontSizeMultiplier (value: obj) = Interop.mkAttr "maxFontSizeMultiplier" value
     /// Only on iOS.
