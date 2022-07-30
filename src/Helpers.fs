@@ -21,5 +21,5 @@ module React =
     /// let height, width, scale, fontScale = React.useWindowDimensions()
     /// ```</example>
     let useWindowDimensions () : float * float * float * float =
-        let dimensions = import "useWindowDimensions" "react-native"
+        let dimensions = (import "useWindowDimensions" "react-native")()
         dimensions?height, dimensions?width, dimensions?scale, dimensions?fontScale
